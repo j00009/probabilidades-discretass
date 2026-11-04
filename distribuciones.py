@@ -1,11 +1,8 @@
-# librerias que se van a usar
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.stats as stats
+
 from math import comb
 
 
-###### funciones correspondientes alas formulas del informe
+###### funciones correspondientes a las formulas del informe
  
 
 # distribucion geometrica
@@ -94,26 +91,13 @@ def hiper_varianza(N, K, n):
 
 if __name__ == "__main__":
     print("--- Geométrica ---")
-    print(f"Ej. 1  P(X=4), p=0,25        = {geom_pmf(4, 0.25):.4f}")
-    print(f"Ej. 1  E(X),   p=0,25        = {geom_media(0.25):.4f}")
-    print(f"Ej. 2a P(X=3), p=0,8         = {geom_pmf(3, 0.8):.4f}")
-    print(f"Ej. 2b P(X<=3), p=0,8        = {geom_cdf(3, 0.8):.4f}")
-    print(f"Ej. 2c E(X),   p=0,8         = {geom_media(0.8):.4f}")
- 
+    print(f"G1  P(X=3),  p=0,20          = {geom_pmf(3, 0.20):.4f}")
+    print(f"G2  P(X<=4), p=0,30          = {geom_cdf(4, 0.30):.4f}")
+    print(f"G3  E(X),    p=0,25          = {geom_media(0.25):.4f}")
+    print(f"G3  Var(X),  p=0,25          = {geom_varianza(0.25):.4f}")
+    print(f"G3  sigma,   p=0,25          = {geom_varianza(0.25) ** 0.5:.2f}")
+
     print("\n--- Hipergeométrica ---")
-    print(f"Ej. 1  P(X=1), N=50,K=5,n=10 = {hiper_pmf(1, 50, 5, 10):.4f}")
-    print(f"Ej. 1  E(X)                  = {hiper_media(50, 5, 10):.4f}")
-    print(f"Ej. 2a P(X=0), N=20,K=4,n=5  = {hiper_pmf(0, 20, 4, 5):.4f}")
-    print(f"Ej. 2b P(X>=1)               = {1 - hiper_pmf(0, 20, 4, 5):.4f}")
-    print(f"Ej. 2c E(X)                  = {hiper_media(20, 4, 5):.4f}")
- 
-    print("\n--- Comprobaciones internas ---")
-    # La suma de todas las probabilidades debe ser 1
-    k_min, k_max = hiper_rango(20, 4, 5)
-    suma = sum(hiper_pmf(k, 20, 4, 5) for k in range(k_min, k_max + 1))
-    print(f"Suma de P(X=k) hipergeométrica = {suma:.6f}")
-    print(f"P(X<=k_max) hipergeométrica    = {hiper_cdf(k_max, 20, 4, 5):.6f}")
-    print(f"Var(X) hiper N=50,K=5,n=10     = {hiper_varianza(50, 5, 10):.4f}  (a mano: 10*0,1*0,9*40/49 = 0,7347)")
- 
-
-
+    print(f"H1  P(X=1), N=50,K=5,n=10    = {hiper_pmf(1, 50, 5, 10):.4f}")
+    print(f"H2  P(X=0), N=20,K=4,n=5     = {hiper_pmf(0, 20, 4, 5):.4f}")
+    print(f"H3  P(X=2), N=25,K=8,n=6     = {hiper_pmf(2, 25, 8, 6):.4f}")
